@@ -55,8 +55,35 @@
         $(".slide-container").css("transform", "translateX(-200vw)");
       });
 
+      // 다음 버튼
+      // 지금 보이는 사진이 1이면 2로 보내주세요
+
+      let nowPhoto = 1;
       $(".next").on("click", () => {
-        $(".slide-container").css("transform", "translateX(-200vw)");
+        if (nowPhoto == 1) {
+          $(".slide-container").css("transform", "translateX(-100vw)");
+          nowPhoto++;
+        } else if (nowPhoto == 2) {
+          $(".slide-container").css("transform", "translateX(-200vw)");
+          nowPhoto++;
+        } else {
+          $(".slide-container").css("transform", "translateX(0vw)");
+          nowPhoto = 1;
+        }
+      });
+
+      // 이전 버튼
+      $(".previous").on("click", () => {
+        if (nowPhoto == 1) {
+          $(".slide-container").css("transform", "translateX(-200vw)");
+          nowPhoto = 3;
+        } else if (nowPhoto == 3) {
+          $(".slide-container").css("transform", "translateX(-100vw)");
+          nowPhoto--;
+        } else {
+          $(".slide-container").css("transform", "translateX(0vw)");
+          nowPhoto = 1;
+        }
       });
     </script>
   </body>
