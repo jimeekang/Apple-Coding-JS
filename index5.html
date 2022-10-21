@@ -46,12 +46,28 @@
 
     <script>
       // 실시간 password 자리수 알려주는 알림 작성해보기
-
       document.querySelector("#password").addEventListener("input", () => {
         document.querySelector("#psinfor").innerHTML =
           "현재 비밀번호 자리 수 는 " +
           document.querySelector("#password").value.length +
           " 입니다.";
+      });
+    </script>
+
+    <script>
+      //Regular Expression : 정규식
+      document.querySelector("#send").addEventListener("click", e => {
+        let userEmail = document.querySelector("#email").value;
+        let userPassword = document.querySelector("#password").value;
+
+        if (/\S+@\S+\.\S+/.test(userEmail) == false) {
+          alert("이메일형식아님");
+          e.preventDefault();
+        }
+        if (/[A-Z]/.test(userPassword) == false) {
+          alert("대문자가 하나도 없네");
+          e.preventDefault();
+        }
       });
     </script>
 
