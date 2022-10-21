@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="alert-box" id="alert">
+      <p id="alert-info">
+        funtion 사용하는 이유 : <br />
+        1. 재사용 가능 <br />
+        2. 긴 코드 축약가능 <br />
+        JavaScript 조작할 html의 하단에 코드짜야 잘 작동됨 <br />
+      </p>
+      <button onclick="alertState('none')">닫기</button>
+    </div>
+
+    <button onclick="alertState('block','ID를 입력하세요')">버튼1</button>
+    <button onclick="alertState('block', 'Password를 입력하세요')">
+      버튼2
+    </button>
+
+    <script>
+      // parameter 통해서 사용하는 function =>  다채롭게 사용 가능
+      function alertState(status, inform) {
+        document.getElementById("alert").style.display = status;
+        document.getElementById("alert-info").innerHTML = inform;
+      }
+
+      /*
+      function alertOpen() {
+        document.getElementById("alert").style.display = "block";
+      }
+      function alertClose() {
+        document.getElementById("alert").style.display = "none";
+      }
+      */
+    </script>
+  </body>
+</html>

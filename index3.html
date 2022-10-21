@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="alert-box" id="alert">
+      <p id="alert-info" class="title">알림창 입니다.</p>
+      <button id="close">닫기</button>
+    </div>
+
+    <button onclick="alertOpen()">버튼1</button>
+    <button onclick="alertState('block', 'Password를 입력하세요')">
+      버튼2
+    </button>
+
+    <script>
+      // EventListener(event명, 콜백함수: 코드를 순차적으로 실행할때, 파라미터로 쓸때 )
+      // event : 클릭, 키입력, 스크롤, 드래그
+      document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("alert").style.display = "none";
+      });
+
+      function alertOpen() {
+        document.getElementById("alert").style.display = "block";
+        // class는 indexing 뒤에 적어줘야함
+        document.getElementsByClassName("title")[0].innerHTML =
+          "ID를 입력하세요";
+      }
+
+      function alertState(status, inform) {
+        document.getElementById("alert").style.display = status;
+        document.getElementById("alert-info").innerHTML = inform;
+      }
+    </script>
+  </body>
+  <!-- JavaScript Bundle with Popper -->
+</html>
