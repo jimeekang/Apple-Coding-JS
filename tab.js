@@ -6,17 +6,32 @@ button 0 누르면
 4. div0에 show 클래스명 추가
 */
 
+function openTap(num) {
+  let button = $(".tab-button");
+  let content = $(".tab-content");
+  button.removeClass("orange");
+  button.eq(num).addClass("orange");
+  content.removeClass("show");
+  content.eq(num).addClass("show");
+}
+
+document.querySelector(".list").addEventListener("click", e => {
+  // 지금 누른게 버튼 0이면 openTap(0)
+  console.log(e.target, e.target.dataset.id);
+  console.log(parseFloat(e.target.dataset.id));
+  openTap(parseFloat(e.target.dataset.id));
+});
+
+/*
 // for statement
 let button = $(".tab-button");
 let content = $(".tab-content");
 for (let i = 0; i < button.length; i++) {
   button.eq(i).on("click", () => {
-    button.removeClass("orange");
-    button.eq(i).addClass("orange");
-    content.removeClass("show");
-    content.eq(i).addClass("show");
+    openTap(i);
   });
 }
+*/
 
 /*
 // Jquery

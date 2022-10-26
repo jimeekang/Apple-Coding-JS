@@ -87,7 +87,7 @@
 .navbar {
   position: fixed; /*상단 고정*/
   width: 100%;
-  z-index: 5;
+  z-index: 3;
 }
 .navbar-brand {
   font-size: 30px;

@@ -43,6 +43,16 @@
         </form>
       </div>
     </div>
+    <script>
+      // 검은색 배경 누르면 모달창 닫는 기능
+      // event bubbling 실행안하고 싶을 때 e
+      document.querySelector(".black-bg").addEventListener("click", e => {
+        //console.log(e.target == document.querySelector(".black-bg"));
+        if (e.target == document.querySelector(".black-bg")) {
+          document.querySelector(".black-bg").classList.remove("show_modal");
+        }
+      });
+    </script>
 
     <script>
       // 실시간 password 자리수 알려주는 알림 작성해보기
