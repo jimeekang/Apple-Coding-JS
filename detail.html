@@ -62,6 +62,10 @@
       .show {
         display: block;
       }
+
+      .form-hide {
+        visibility: hidden;
+      }
     </style>
     <div class="container mt-3">
       <div class="card p-3">
@@ -98,15 +102,15 @@
       <select class="form-select mt-2 option-product">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
-      <select class="form-select mt-2 option-size">
+      <select class="form-select mt-2 option-size form-hide">
         <option>95</option>
         <option>100</option>
       </select>
     </form>
 
     <script>
-      document.querySelector(".option-size").style.visibility = "hidden";
       /*
       document.querySelector(".option-product").addEventListener("click", e => {
         if (e.target.value == "셔츠") {
@@ -117,14 +121,86 @@
       });
       */
 
+      /*
       document.querySelector(".option-product").addEventListener("input", e => {
         let value = e.currentTarget.value; // == this.value
         if (value == "셔츠") {
+          let shirt = `<option>95</option>
+          <option>100</option>`;
+          document.querySelector(".option-size").style.visibility = "visible";
+          document.querySelector(".option-size").innerHTML = shirt;
+        } else if (value == "바지") {
+          let pants = `<option>30</option>
+                      <option>35</option>`;
+          document.querySelector(".option-size").innerHTML = pants;
           document.querySelector(".option-size").style.visibility = "visible";
         } else {
           document.querySelector(".option-size").style.visibility = "hidden";
         }
       });
+      */
+
+      // array 반복문
+      let pants = [28, 30, 32, 34];
+      let shirts = [95, 100, 105];
+
+      document.querySelector(".option-product").addEventListener("input", e => {
+        let value = e.currentTarget.value;
+        if (value == "셔츠") {
+          document.querySelector(".option-size").classList.remove("form-hide");
+          document.querySelector(".option-size").innerHTML = "";
+          shirts.forEach(shirt => {
+            $(".option-size").append(`<option>${shirt}</option>`);
+          });
+        } else if (value == "바지") {
+          document.querySelector(".option-size").classList.remove("form-hide");
+          document.querySelector(".option-size").innerHTML = "";
+          pants.forEach((a, i) => {
+            console.log(i);
+            $(".option-size").append(`<option>${a}</option>`);
+          });
+        } else {
+          document.querySelector(".option-size").classList.add("form-hide");
+        }
+      });
+
+      // object 반복문
+      let obj = {
+        name: "Jimee",
+        age: 20,
+      };
+
+      for (let key in obj) {
+        console.log(obj[key]);
+      }
+    </script>
+
+    <div id="test">히히</div>
+
+    <script>
+      // 자바스크립트로 html 생성
+      let template = "<p class='addClass'>안녕</p>";
+      document.querySelector("#test").insertAdjacentHTML("beforeend", template);
+
+      /*
+      document.querySelector(".option-product").addEventListener("input", e => {
+        let value = e.currentTarget.value; 
+        if (value == "바지") {
+          let pants = `<option>30</option> <option>35</option>`;
+          document.querySelector(".option-size").innerHTML = pants;
+          document.querySelector(".option-size").style.visibility = "visible";
+        } else {
+          document.querySelector(".option-size").style.visibility = "hidden";
+        }
+      });
+      */
+
+      /*
+      let pTag = document.createElement("p");
+      pTag.innerHTML = "안녕";
+      // pTag.classList.add() : class 넣기
+      document.querySelector("#test").appendChild(pTag);
+      */
     </script>
 
     <div class="container mt-5">
