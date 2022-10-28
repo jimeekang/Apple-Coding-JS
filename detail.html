@@ -72,8 +72,8 @@
 
     <script>
       // array
-      let car = ["sonata", 50000, "white"];
-      car[0] = "avante"; // 교체
+      let car = ["Sonata", 50000, "white"];
+      car[0] = "Avante"; // 교체
       car[3] = "4cycle"; // 추가
       console.log(car);
       console.log(car.sort());
@@ -81,7 +81,7 @@
 
       // object
       let car2 = {
-        name: "sonata",
+        name: "Sonata",
         price: [6000, 30000, 4000],
         color: "white",
       };
@@ -89,8 +89,42 @@
       console.log(car2.name);
       console.log(car2.price);
 
-      document.querySelector(".product").innerHTML = car2.name;
-      document.querySelector(".price").innerHTML = car2.price[0];
+      document.querySelector(".product").innerHTML = `상품명: ${car2.name}`;
+      document.querySelector(".price").innerHTML = `가격: ${car2.price[0]}`;
+    </script>
+
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select class="form-select mt-2 option-product">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+      <select class="form-select mt-2 option-size">
+        <option>95</option>
+        <option>100</option>
+      </select>
+    </form>
+
+    <script>
+      document.querySelector(".option-size").style.visibility = "hidden";
+      /*
+      document.querySelector(".option-product").addEventListener("click", e => {
+        if (e.target.value == "셔츠") {
+          document.querySelector(".option-size").style.visibility = "visible";
+        } else {
+          document.querySelector(".option-size").style.visibility = "hidden";
+        }
+      });
+      */
+
+      document.querySelector(".option-product").addEventListener("input", e => {
+        let value = e.currentTarget.value; // == this.value
+        if (value == "셔츠") {
+          document.querySelector(".option-size").style.visibility = "visible";
+        } else {
+          document.querySelector(".option-size").style.visibility = "hidden";
+        }
+      });
     </script>
 
     <div class="container mt-5">

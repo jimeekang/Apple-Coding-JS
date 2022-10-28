@@ -63,8 +63,12 @@
         const title = document.querySelectorAll(".card-body h5"); // .card-body 안에 자식 h5
         const price = document.querySelectorAll(".card-body p");
         title[i].innerHTML = products[i].title;
-        price[i].innerHTML = "가격: " + products[i].price;
+        price[i].innerHTML = `가격: ${products[i].price}`;
       }
+
+      // 문자 중간에 변수 넣기 `` 백틱
+      let a = "안녕";
+      console.log(`안녕 ${a}`);
     </script>
   </body>
 </html>
