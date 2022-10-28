@@ -17,8 +17,8 @@ function openTap(num) {
 
 document.querySelector(".list").addEventListener("click", e => {
   // 지금 누른게 버튼 0이면 openTap(0)
-  console.log(e.target, e.target.dataset.id);
-  console.log(parseFloat(e.target.dataset.id));
+  //console.log(e.target, e.target.dataset.id);
+  //console.log(parseFloat(e.target.dataset.id));
   openTap(parseFloat(e.target.dataset.id));
 });
 
