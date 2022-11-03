@@ -70,5 +70,38 @@
       let a = "안녕";
       console.log(`안녕 ${a}`);
     </script>
+
+    <script>
+      // ajax로 GET 요청하는 법
+      // Jquery version
+      $.get("https://codingapple1.github.io/price.json")
+        .done(data => {
+          console.log(data.price);
+        })
+        .fail(() => {
+          console.log("실패");
+        });
+
+      //javascript version
+      fetch("https://codingapple1.github.io/price.json")
+        .then(res => res.json())
+        .then(data => {
+          console.log(data.price);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      /*
+      // ajax로 POST 요청하는 법
+      $.post("https://codingapple1.github.io/hello.txt")
+        .done(data => {
+          console.log(data);
+        })
+        .fail(() => {
+          console.log("실패");
+        });
+        */
+    </script>
   </body>
 </html>
