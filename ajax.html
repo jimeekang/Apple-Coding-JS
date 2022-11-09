@@ -76,9 +76,11 @@
       let count = 1;
       $("#more").click(e => {
         if (count == 1) {
-          $.get("https://codingapple1.github.io/js/more1.json").done(data => {
-            makeCard(data);
-          });
+          $.get("https://codingapple1.github.io/js/more1.json")
+            .done(data => {
+              makeCard(data);
+            })
+            .fail(() => console.log("실패함"));
           count++;
         } else {
           $.get("https://codingapple1.github.io/js/more2.json").done(data => {
@@ -87,6 +89,96 @@
           $(".btn").css("display", "none");
         }
       });
+
+      /* JavaScript GET request ver.
+      fetch("https://codingapple1.github.io/js/more1.json")
+        .then(res => res.json()) // 받아온 json을 array, object로 변환해줌 
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+        */
+    </script>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="price">가격순정렬</button>
+    </div>
+
+    <script>
+      $("#price").click(() => {
+        products.sort((a, b) => {
+          return a.price - b.price;
+        });
+        $(".row").html("");
+        makeCard(products);
+      });
+    </script>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="name">다나가순정렬</button>
+    </div>
+    <script>
+      $("#name").click(() => {
+        // 문자 역순 정렬
+        products.sort((a, b) => {
+          if (a.title < b.title) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        $(".row").html("");
+        makeCard(products);
+      });
+    </script>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="filter">6만원이하</button>
+    </div>
+
+    <script>
+      $("#filter").click(() => {
+        let filterPrice = products.filter(a => {
+          return a.price <= 60000;
+        });
+        $(".row").html("");
+        makeCard(filterPrice);
+      });
+    </script>
+
+    <script>
+      // sort() : 원본 변형O
+      let arr = [7, 5, 8, 6, 4, 20];
+
+      arr.sort(); // 문자순으로 정렬
+      console.log(arr);
+
+      arr.sort((a, b) => {
+        return a - b; // 숫자 오름차순 정렬
+        // return b - a; 내림차순 정렬
+      });
+      console.log(arr);
+
+      // filter() : 변수에 저장하여 사용, 원본 변형x
+      let filterArr = arr.filter(a => {
+        return a < 9; // 조건식 return
+      });
+      console.log(filterArr);
+
+      // map() : array자료 전부 변형할 때 사용 (원화)
+      let mapArr = arr.map(a => {
+        return a * 4; // 조건식 return
+      });
+      console.log(mapArr);
+
+      let arr2 = ["a", "g", "s", "e"];
+      arr2.sort((a, b) => {
+        return a > b; // 문자 가나다순 정렬
+        // return b > a; 문자 다나가순 정렬
+      });
+      console.log(arr2);
     </script>
   </body>
 </html>
