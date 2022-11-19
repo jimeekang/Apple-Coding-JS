@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="sticky.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="card-background">
+      <div class="card-box">
+        <img src="card1.png" alt="" />
+      </div>
+      <div class="card-box">
+        <img src="card2.png" alt="" />
+      </div>
+      <div class="card-box">
+        <img src="card3.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      $(window).scroll(() => {
+        let height = $(window).scrollTop();
+        console.log(height);
+
+        /*650~1150 까지 스크롤바를 내리면,
+        첫번째 카드의 opacity 1 -> 0으로 서서히 변경*/
+
+        let y = (-1 / 500) * height + 115 / 50;
+        /* 0의 자리는 1=>0으로 변하는 변수를 넣어줌 
+          (1차 방정식 생각하기)
+          1 = a * height + b
+          0 = a * height + b */
+        $(".card-box").eq(0).css("opacity", y);
+
+        let z = (-1 / 5000) * height + 565 / 500;
+        /* 0의 자리는 1=>0.9으로 변하는 변수를 넣어줌 
+          (1차 방정식 생각하기)
+          1 = a * height + b
+          0.9 = a * height + b */
+        $(".card-box").eq(0).css("transform", `scale(${z})`);
+      });
+    </script>
+  </body>
+</html>
