@@ -50,6 +50,7 @@
             <img src="https://via.placeholder.com/600" class="w-100" />
             <h5>${data.title}</h5>
             <p>가격 : ${data.price}</p>
+            <button class='buy'>구매</button>
           </div>`;
           $(".row").append(card);
         });
@@ -179,6 +180,24 @@
         // return b > a; 문자 다나가순 정렬
       });
       console.log(arr2);
+    </script>
+
+    <script>
+      // 브라우저의 localStorage
+      localStorage.setItem("name", "Kang");
+
+      let arr3 = [1, 2, 3];
+      let newArr = JSON.stringify(arr3); // array/object 를 JSON으로 변환
+      localStorage.setItem("num", newArr);
+
+      let outArr = localStorage.getItem("num");
+      JSON.parse(outArr); // JSON을 array/object로 변환
+      console.log(outArr);
+
+      /*
+      localStorage.getItem("name");
+      localStorage.removeItem("name");
+      */
     </script>
   </body>
 </html>

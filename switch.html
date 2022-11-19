@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="quiz">
+      <h4>물에빠지면 누구먼저 구할 것임?</h4>
+      <button>남편</button>
+      <button>부모님</button>
+      <button>잉꼬</button>
+    </div>
+
+    <script>
+      /*
+      // if statement: 다양한 조건식 사용 가능
+      let a = 2 + 5;
+      switch (a) {
+        case 3:
+          alert("value is 3");
+          break;
+        case 4:
+          alert("value is 4");
+          break;
+        default:
+          alert("Noting here");
+      }
+      */
+
+      document.querySelector("#quiz").addEventListener("click", e => {
+        let target = e.target.innerHTML;
+        switch (target) {
+          case "남편":
+            alert("남편을 선택함");
+            break;
+          case "부모님":
+            alert("부모님을 선택함");
+            break;
+          case "잉꼬":
+            alert("잉꼬를 선택함");
+            break;
+          default:
+            alert("혼자만 살아남기");
+        }
+      });
+    </script>
+  </body>
+</html>
